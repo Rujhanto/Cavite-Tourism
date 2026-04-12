@@ -4,24 +4,453 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cavite Tourism | Welcome</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+<!-- C&P SA CSS -->
     <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            scroll-behavior: smooth;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
         header.main-header {
+            background: #2d6a2d;
+            padding: 0.5rem 2%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border-bottom: 4px solid #1e4e1e;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
             z-index: 1000;
         }
+
+        header.main-header .logo-link {
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        header.main-header .logo-img {
+            height: 60px;
+            width: auto;
+            display: block;
+            border: 3px solid #f0c040;
+            border-radius: 50%;
+        }
+
+        .header-center {
+            flex: 1;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+
+        .header-tagline {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+            color: #d4edda;
+        }
+
+        .header-title {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4), 0 0 20px rgba(255,255,100,0.3);
+            font-style: italic;
+            line-height: 1;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        header.main-header nav {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        header.main-header .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        header.main-header .nav-link:hover {
+            color: #f0c040;
+        }
+
+        header.main-header .nav-dropdown {
+            position: relative;
+        }
+
+        header.main-header .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: calc(100% + 8px);
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 10px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.88rem;
+            transition: background 0.2s, padding-left 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f0f0f0;
+            color: #2d6a2d;
+            padding-left: 24px;
+        }
+
+        /* HERO BANNER */
         .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
             margin-top: 80px;
+        }
+
+        .hero-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.65);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0 5%;
+        }
+
+        .hero-left { flex-shrink: 0; }
+
+        .hero-seal {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            border: 3px solid #f0c040;
+            display: block;
+        }
+
+        .hero-center {
+            text-align: center;
+            flex: 1;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 4px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+            line-height: 1;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .hero-tagline-sm {
+            font-size: 0.8rem;
+            color: #d4edda;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .hero-cta {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #f0c040;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.9);
+            font-style: italic;
+        }
+
+        .hero-right { flex-shrink: 0; }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 8px;
+            padding: 10px 18px;
+            text-align: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-badge-top {
+            display: block;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero-badge-bottom {
+            display: block;
+            color: #f0c040;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* MAIN */
+        main {
+            padding: 2.5rem 5%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-heading h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .section-heading p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* CATEGORY CARD */
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .category-img {
+            width: 100%;
+            height: 180px;
+            display: block;
+            object-fit: cover;
+            background-color: #e9ecef;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover .category-img {
+            transform: scale(1.05);
+        }
+
+        .category-info {
+            padding: 1.4rem;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .category-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .category-info p {
+            font-size: 0.88rem;
+            color: #555;
+            line-height: 1.5;
+            margin-top: 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .explore-link {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #3498db;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .category-card:hover .explore-link {
+            color: #2d6a2d;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #888;
+            font-size: 0.88rem;
+            background: #fff;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        /* CAROUSEL */
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #2d6a2d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .carousel-btn:hover {
+            background: #1e4e1e;
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-btn.prev {
+            left: -18px;
+        }
+
+        .carousel-btn.next {
+            right: -18px;
+        }
+
+        .carousel-outer {
+            position: relative;
+            padding: 0 28px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 28px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: #2d6a2d;
+            transform: scale(1.3);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .carousel-slide { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .header-title { font-size: 1.3rem; }
+            .header-tagline { font-size: 0.7rem; }
+            header.main-header .logo-img { height: 45px; }
+            .hero-banner { height: 220px; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-seal { height: 65px; width: 65px; }
+            .hero-left, .hero-right { display: none; }
+            .carousel-slide { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-slide { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<!-- GREEN HEADER -->
+<!-- START HEADER -->
 <header class="main-header">
     <a href="index.html" class="logo-link">
         <img src="image/cavite.png" alt="Cavite Seal" class="logo-img">
@@ -33,7 +462,7 @@
     <nav>
         <a href="index.html" class="nav-link">Home</a>
         <div class="nav-dropdown">
-            <a class="nav-link">Explore ▾</a>
+            <a class="nav-link">Explore &#9662;</a>
             <div class="dropdown-content">
                 <a href="highlands.html">Highlands &amp; Ridges</a>
                 <a href="heritage.html">Historical Landmarks</a>
@@ -61,7 +490,7 @@
     </nav>
 </header>
 
-<!-- HERO BANNER -->
+<!-- START HERO -->
 <div class="hero-banner">
     <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_863/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/cpess7humuyyeclvqx7n/PanoramicTagaytayRidgeTour.jpg" alt="Cavite Hero" class="hero-bg">
     <div class="hero-overlay">
@@ -83,202 +512,247 @@
     </div>
 </div>
 
-<!-- CATEGORY GRID -->
+<!-- AKONG CAROUSEL -->
 <main>
     <div class="section-heading">
         <h2>Experience Cavite</h2>
         <p>Choose your adventure from our 20 unique tourism categories.</p>
     </div>
 
-    <div class="category-grid">
+    <div class="carousel-outer">
+        <div class="carousel-wrapper">
+            <div class="carousel-track" id="carouselTrack">
 
-        <a href="heritage.html" class="category-card">
-            <img src="https://3.bp.blogspot.com/-ThjZfHSkCc4/VW3GDoRWCVI/AAAAAAAAOPo/Uh5VQjdVokg/s1600/1.jpg" alt="Historical Landmarks" class="category-img">
-            <div class="category-info">
-                <h3>Historical Landmarks</h3>
-                <p>The "Historical Capital of the Philippines." Visit the Aguinaldo Shrine and sites where the revolution was born.</p>
-                <span class="explore-link">Explore &rarr;</span>
+                <!-- 1 -->
+                <div class="carousel-slide">
+                    <a href="heritage.html" class="category-card">
+                        <img src="https://3.bp.blogspot.com/-ThjZfHSkCc4/VW3GDoRWCVI/AAAAAAAAOPo/Uh5VQjdVokg/s1600/1.jpg" alt="Historical Landmarks" class="category-img">
+                        <div class="category-info">
+                            <h3>Historical Landmarks</h3>
+                            <p>The "Historical Capital of the Philippines." Visit the Aguinaldo Shrine and sites where the revolution was born.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="highlands.html" class="category-card">
+                        <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_863/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/cpess7humuyyeclvqx7n/PanoramicTagaytayRidgeTour.jpg" alt="Highlands and Ridges" class="category-img">
+                        <div class="category-info">
+                            <h3>Highlands &amp; Ridges</h3>
+                            <p>Escape the heat in Tagaytay. Enjoy the world-famous view of Taal Volcano and the cool mountain air.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="coffee.html" class="category-card">
+                        <img src="https://pinaywise.com/wp-content/uploads/2024/03/Amadeos-Coffee-Festival-2048x2048.jpg" alt="Coffee Culture" class="category-img">
+                        <div class="category-info">
+                            <h3>Coffee Culture</h3>
+                            <p>Taste the "Kapeng Barako" and "Pahimis" blends. Cavite is the coffee processing capital of the country.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="agri.html" class="category-card">
+                        <img src="https://primer.com.ph/travel/wp-content/uploads/sites/6/2019/10/GourmetFarms_Featured.png" alt="Farm Tourism" class="category-img">
+                        <div class="category-info">
+                            <h3>Farm Tourism</h3>
+                            <p>Pick fresh strawberries, harvest organic veggies, and experience farm-to-table dining in Silang and Amadeo.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 2 -->
+                <div class="carousel-slide">
+                    <a href="religious.html" class="category-card">
+                        <img src="https://i.pinimg.com/736x/68/39/b1/6839b199d91ae168fdfb91b2d79b598d--cathedral-church-cathedrals.jpg" alt="Heritage Churches" class="category-img">
+                        <div class="category-info">
+                            <h3>Heritage Churches</h3>
+                            <p>Visit centuries-old Spanish era churches like the Imus Cathedral and the Maragondon Church.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="beaches.html" class="category-card">
+                        <img src="https://ik.imagekit.io/tvlk/blog/2023/07/shutterstock_1848999469-3.jpg?tr=dpr-2,w-675" alt="Coastal Escapes" class="category-img">
+                        <div class="category-info">
+                            <h3>Coastal Escapes</h3>
+                            <p>Explore the sandy shores of Ternate and Naic. Perfect for a quick weekend beach getaway near Manila.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="culinary.html" class="category-card">
+                        <img src="https://riverpark.ph/wp-content/uploads/2025/06/pancitpuso.jpg" alt="Culinary Trails" class="category-img">
+                        <div class="category-info">
+                            <h3>Culinary Trails</h3>
+                            <p>From Pancit Estacion to Samala rice cakes, discover the unique heirloom recipes of Cavite&ntilde;o cuisine.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="amusement.html" class="category-card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_9GpX7Dl1jXvB2i-_M3FZaq069Amu2d02cDfzQHMP9jH5Q7Db4CoNDXJurVr9Qw-f-Aihc22B0mIbiOepvNnnFqoH5jaWytHoMGW1Ql2xDXbclUOAKsSJfD3qs-P16lXv-3WaIxFT12H55yaFu__h5PoZPC5IOjuPUuroyOexL33JftAza07Y_KVRbK4y/s1200/Sky-Ranch-Tagaytay-aerial-view.jpg" alt="Theme Parks" class="category-img">
+                        <div class="category-info">
+                            <h3>Theme Parks</h3>
+                            <p>Get your adrenaline fix at Sky Ranch Tagaytay or enjoy water adventures in various local splash parks.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 3 -->
+                <div class="carousel-slide">
+                    <a href="trekking.html" class="category-card">
+                        <img src="https://hiketomountains.com/wp-content/uploads/2022/07/Mt-Pico-de-Loro-Day-Hike-10.jpg" alt="Mountain Trekking" class="category-img">
+                        <div class="category-info">
+                            <h3>Mountain Trekking</h3>
+                            <p>Hike the iconic Mt. Pico de Loro or Mt. Marami for breathtaking 360-degree views of the province.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="museums.html" class="category-card">
+                        <img src="https://www.filipinoart.ph/newsroom/wp-content/uploads/2020/04/Museo-Orlina-1-1024x711.jpg" alt="Modern Museums" class="category-img">
+                        <div class="category-info">
+                            <h3>Modern Museums</h3>
+                            <p>Explore contemporary art at Museo Orlina or dive into local history at the Museo de La Salle.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="waterfalls.html" class="category-card">
+                        <img src="https://calabarzontheregionyoucancallhome.files.wordpress.com/2018/10/balite-falls-amadeo-cavite.jpg" alt="Nature Waterfalls" class="category-img">
+                        <div class="category-info">
+                            <h3>Nature Waterfalls</h3>
+                            <p>Discover hidden wonders like Balite Falls and Pantihan Falls for a refreshing dip in fresh spring water.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="eco.html" class="category-card">
+                        <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_862/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/wiflbwnybaiu5fvrbasr/DaintreeRainforestCanopyZiplineTourinCapeTribulation.jpg" alt="Eco-Adventure" class="category-img">
+                        <div class="category-info">
+                            <h3>Eco-Adventure</h3>
+                            <p>Zipline through forests or explore wildlife sanctuaries dedicated to preserving Cavite's biodiversity.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 4 -->
+                <div class="carousel-slide">
+                    <a href="houses.html" class="category-card">
+                        <img src="https://alchetron.com/cdn/bonifacio-trial-house-f4b13738-a4f2-4f8d-a7f9-8581767e433-resize-750.jpeg" alt="Ancestral Houses" class="category-img">
+                        <div class="category-info">
+                            <h3>Ancestral Houses</h3>
+                            <p>Step back in time inside the Bonifacio Trial House and other preserved "Bahay na Bato" structures.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="resorts.html" class="category-card">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/457077612.jpg?k=87f015c13138154b030159e6a4b25f697149bcb0ccad4250897e5eb94ae3fd28&o=" alt="Staycations & Resorts" class="category-img">
+                        <div class="category-info">
+                            <h3>Staycations &amp; Resorts</h3>
+                            <p>Luxury villas and family-friendly resorts wait in Alfonso and Dasma&ntilde;rias for your next "home away from home."</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="gardens.html" class="category-card">
+                        <img src="https://thesmartlocal.ph/wp-content/uploads/2022/05/Hidden-Charm-Cafe-in-Silang-Cavite-garden-like-setup-scaled.jpeg" alt="Garden Restaurants" class="category-img">
+                        <div class="category-info">
+                            <h3>Garden Restaurants</h3>
+                            <p>Dine surrounded by orchids and lush greenery in the many "secret garden" cafes found in Silang.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="islands.html" class="category-card">
+                        <img src="https://cdn-0.unexploredfootsteps.com/wp-content/uploads/2020/04/Corregidor-Island-Tour-Siargao-Beach.jpeg" alt="Island Hopping" class="category-img">
+                        <div class="category-info">
+                            <h3>Island Hopping</h3>
+                            <p>Take a boat to the historic Corregidor Island or explore the rugged beauty of Carabao Island.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 5 -->
+                <div class="carousel-slide">
+                    <a href="wellness.html" class="category-card">
+                        <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_863,f_auto/w_80,x_15,y_15,g_south_west,l_klook_water/activities/mfjxylt2bdtwjctcskcb/NurtureWellnessVillageSpaExperienceinTagaytay.jpg" alt="Wellness Retreats" class="category-img">
+                        <div class="category-info">
+                            <h3>Wellness Retreats</h3>
+                            <p>Rejuvenate your soul with holistic spas and meditation centers tucked in the quiet hills of Cavite.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="markets.html" class="category-card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiso7oIIbKZhN34Zm4KGHkw3qCs7ZR1W-5dO1Hhs4ibA1JjtgGu8M4UVjiDzeIenLvKxRapJ-AisCbG5sK6lH4NxxImkoS6Q0EHi-GTyUdZxj9e4Ti1hY4FO288eJ-n7lUmMa6lhguNa4gV0A3aJOVGv0SVKRBUCOw--W4TspX53OZxoF_n5lWSDURf/s831/Mahogany%20Beef%20Market.JPG" alt="Local Markets" class="category-img">
+                        <div class="category-info">
+                            <h3>Local Markets</h3>
+                            <p>Shop for fresh tawilis, dried fish, and local handicrafts at the bustling Tagaytay Mahogany Market.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="golf.html" class="category-card">
+                        <img src="https://photo.golfasian.com/golf-courses/sherwoods-hills/Sherwood%20Hills%20Golf%20Club%20Layout.jpg" alt="Golf & Recreation" class="category-img">
+                        <div class="category-info">
+                            <h3>Golf &amp; Recreation</h3>
+                            <p>Tee off at world-class golf courses like Sherwood Hills or The Orchard in the "Golf Capital."</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="festivals.html" class="category-card">
+                        <img src="https://journalnews.com.ph/wp-content/uploads/2023/06/Regada-Water-Festival-1024x683.jpg" alt="Festivals & Culture" class="category-img">
+                        <div class="category-info">
+                            <h3>Festivals &amp; Culture</h3>
+                            <p>Experience the vibrant Regada Water Festival or the Mardicas dance&mdash;a celebration of Cavite&ntilde;o spirit.</p>
+                            <span class="explore-link">Explore &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+
             </div>
-        </a>
+        </div>
 
-        <a href="highlands.html" class="category-card">
-            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_863/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/cpess7humuyyeclvqx7n/PanoramicTagaytayRidgeTour.jpg" alt="Highlands and Ridges" class="category-img">
-            <div class="category-info">
-                <h3>Highlands &amp; Ridges</h3>
-                <p>Escape the heat in Tagaytay. Enjoy the world-famous view of Taal Volcano and the cool mountain air.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="coffee.html" class="category-card">
-            <img src="https://pinaywise.com/wp-content/uploads/2024/03/Amadeos-Coffee-Festival-2048x2048.jpg" alt="Coffee Culture" class="category-img">
-            <div class="category-info">
-                <h3>Coffee Culture</h3>
-                <p>Taste the "Kapeng Barako" and "Pahimis" blends. Cavite is the coffee processing capital of the country.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="agri.html" class="category-card">
-            <img src="https://primer.com.ph/travel/wp-content/uploads/sites/6/2019/10/GourmetFarms_Featured.png" alt="Farm Tourism" class="category-img">
-            <div class="category-info">
-                <h3>Farm Tourism</h3>
-                <p>Pick fresh strawberries, harvest organic veggies, and experience farm-to-table dining in Silang and Amadeo.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="religious.html" class="category-card">
-            <img src="https://i.pinimg.com/736x/68/39/b1/6839b199d91ae168fdfb91b2d79b598d--cathedral-church-cathedrals.jpg" alt="Heritage Churches" class="category-img">
-            <div class="category-info">
-                <h3>Heritage Churches</h3>
-                <p>Visit centuries-old Spanish era churches like the Imus Cathedral and the Maragondon Church.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="beaches.html" class="category-card">
-            <img src="https://ik.imagekit.io/tvlk/blog/2023/07/shutterstock_1848999469-3.jpg?tr=dpr-2,w-675" alt="Coastal Escapes" class="category-img">
-            <div class="category-info">
-                <h3>Coastal Escapes</h3>
-                <p>Explore the sandy shores of Ternate and Naic. Perfect for a quick weekend beach getaway near Manila.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="culinary.html" class="category-card">
-            <img src="https://riverpark.ph/wp-content/uploads/2025/06/pancitpuso.jpg" alt="Culinary Trails" class="category-img">
-            <div class="category-info">
-                <h3>Culinary Trails</h3>
-                <p>From Pancit Estacion to Samala rice cakes, discover the unique heirloom recipes of Caviteño cuisine.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="amusement.html" class="category-card">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_9GpX7Dl1jXvB2i-_M3FZaq069Amu2d02cDfzQHMP9jH5Q7Db4CoNDXJurVr9Qw-f-Aihc22B0mIbiOepvNnnFqoH5jaWytHoMGW1Ql2xDXbclUOAKsSJfD3qs-P16lXv-3WaIxFT12H55yaFu__h5PoZPC5IOjuPUuroyOexL33JftAza07Y_KVRbK4y/s1200/Sky-Ranch-Tagaytay-aerial-view.jpg" alt="Theme Parks" class="category-img">
-            <div class="category-info">
-                <h3>Theme Parks</h3>
-                <p>Get your adrenaline fix at Sky Ranch Tagaytay or enjoy water adventures in various local splash parks.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="trekking.html" class="category-card">
-            <img src="https://hiketomountains.com/wp-content/uploads/2022/07/Mt-Pico-de-Loro-Day-Hike-10.jpg" alt="Mountain Trekking" class="category-img">
-            <div class="category-info">
-                <h3>Mountain Trekking</h3>
-                <p>Hike the iconic Mt. Pico de Loro or Mt. Marami for breathtaking 360-degree views of the province.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="museums.html" class="category-card">
-            <img src="https://www.filipinoart.ph/newsroom/wp-content/uploads/2020/04/Museo-Orlina-1-1024x711.jpg" alt="Modern Museums" class="category-img">
-            <div class="category-info">
-                <h3>Modern Museums</h3>
-                <p>Explore contemporary art at Museo Orlina or dive into local history at the Museo de La Salle.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="waterfalls.html" class="category-card">
-            <img src="https://calabarzontheregionyoucancallhome.files.wordpress.com/2018/10/balite-falls-amadeo-cavite.jpg" alt="Nature Waterfalls" class="category-img">
-            <div class="category-info">
-                <h3>Nature Waterfalls</h3>
-                <p>Discover hidden wonders like Balite Falls and Pantihan Falls for a refreshing dip in fresh spring water.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="eco.html" class="category-card">
-            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_862/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/wiflbwnybaiu5fvrbasr/DaintreeRainforestCanopyZiplineTourinCapeTribulation.jpg" alt="Eco-Adventure" class="category-img">
-            <div class="category-info">
-                <h3>Eco-Adventure</h3>
-                <p>Zipline through forests or explore wildlife sanctuaries dedicated to preserving Cavite's biodiversity.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="houses.html" class="category-card">
-            <img src="https://alchetron.com/cdn/bonifacio-trial-house-f4b13738-a4f2-4f8d-a7f9-8581767e433-resize-750.jpeg" alt="Ancestral Houses" class="category-img">
-            <div class="category-info">
-                <h3>Ancestral Houses</h3>
-                <p>Step back in time inside the Bonifacio Trial House and other preserved "Bahay na Bato" structures.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="resorts.html" class="category-card">
-            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/457077612.jpg?k=87f015c13138154b030159e6a4b25f697149bcb0ccad4250897e5eb94ae3fd28&o=" alt="Staycations & Resorts" class="category-img">
-            <div class="category-info">
-                <h3>Staycations &amp; Resorts</h3>
-                <p>Luxury villas and family-friendly resorts wait in Alfonso and Dasmariñas for your next "home away from home."</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="gardens.html" class="category-card">
-            <img src="https://thesmartlocal.ph/wp-content/uploads/2022/05/Hidden-Charm-Cafe-in-Silang-Cavite-garden-like-setup-scaled.jpeg" alt="Garden Restaurants" class="category-img">
-            <div class="category-info">
-                <h3>Garden Restaurants</h3>
-                <p>Dine surrounded by orchids and lush greenery in the many "secret garden" cafes found in Silang.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="islands.html" class="category-card">
-            <img src="https://cdn-0.unexploredfootsteps.com/wp-content/uploads/2020/04/Corregidor-Island-Tour-Siargao-Beach.jpeg" alt="Island Hopping" class="category-img">
-            <div class="category-info">
-                <h3>Island Hopping</h3>
-                <p>Take a boat to the historic Corregidor Island or explore the rugged beauty of Carabao Island.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="wellness.html" class="category-card">
-            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_863,f_auto/w_80,x_15,y_15,g_south_west,l_klook_water/activities/mfjxylt2bdtwjctcskcb/NurtureWellnessVillageSpaExperienceinTagaytay.jpg" alt="Wellness Retreats" class="category-img">
-            <div class="category-info">
-                <h3>Wellness Retreats</h3>
-                <p>Rejuvenate your soul with holistic spas and meditation centers tucked in the quiet hills of Cavite.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="markets.html" class="category-card">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiso7oIIbKZhN34Zm4KGHkw3qCs7ZR1W-5dO1Hhs4ibA1JjtgGu8M4UVjiDzeIenLvKxRapJ-AisCbG5sK6lH4NxxImkoS6Q0EHi-GTyUdZxj9e4Ti1hY4FO288eJ-n7lUmMa6lhguNa4gV0A3aJOVGv0SVKRBUCOw--W4TspX53OZxoF_n5lWSDURf/s831/Mahogany%20Beef%20Market.JPG" alt="Local Markets" class="category-img">
-            <div class="category-info">
-                <h3>Local Markets</h3>
-                <p>Shop for fresh tawilis, dried fish, and local handicrafts at the bustling Tagaytay Mahogany Market.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="golf.html" class="category-card">
-            <img src="https://photo.golfasian.com/golf-courses/sherwoods-hills/Sherwood%20Hills%20Golf%20Club%20Layout.jpg" alt="Golf & Recreation" class="category-img">
-            <div class="category-info">
-                <h3>Golf &amp; Recreation</h3>
-                <p>Tee off at world-class golf courses like Sherwood Hills or The Orchard in the "Golf Capital."</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
-        <a href="festivals.html" class="category-card">
-            <img src="https://journalnews.com.ph/wp-content/uploads/2023/06/Regada-Water-Festival-1024x683.jpg" alt="Festivals & Culture" class="category-img">
-            <div class="category-info">
-                <h3>Festivals &amp; Culture</h3>
-                <p>Experience the vibrant Regada Water Festival or the Mardicas dance—a celebration of Caviteño spirit.</p>
-                <span class="explore-link">Explore &rarr;</span>
-            </div>
-        </a>
-
+        <button class="carousel-btn prev" id="prevBtn" aria-label="Previous">&#8249;</button>
+        <button class="carousel-btn next" id="nextBtn" aria-label="Next">&#8250;</button>
     </div>
+
+    <div class="carousel-dots" id="carouselDots"></div>
 </main>
 
 <footer>
     &copy; 2026 Cavite by carpiomark68@gmail.com, Designed with care.
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const track = document.getElementById('carouselTrack');
+    const dotsContainer = document.getElementById('carouselDots');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const total = slides.length;
+    let current = 0;
+
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    function updateDots() {
+        document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === current);
+        });
+    }
+
+    function goTo(index) {
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        updateDots();
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        goTo(current === 0 ? total - 1 : current - 1);
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        goTo(current === total - 1 ? 0 : current + 1);
+    });
+</script>
+
 </body>
 </html>
+
